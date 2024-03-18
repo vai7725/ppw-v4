@@ -4,8 +4,8 @@ import heroImg from '@/assets/hero-img.webp'
 
 export default function Hero() {
   return (
-    <div>
-      <Container className=" space-y-8 flex flex-col-reverse sm:flex-row items-center justify-between">
+    <div className="border-b-2 py-12">
+      <Container className=" flex flex-col-reverse sm:flex-row items-center justify-between">
         <div className="">
           <h1 className="text-3xl sm:text-4xl font-semibold text-center sm:text-left">
             Download and <br />

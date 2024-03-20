@@ -30,7 +30,7 @@ export default function Navbar() {
               <Image src={logo} alt="logo" width={60} height={60} />
             </Link>
           </div>
-          <ul className="menu menu-horizontal bg-primary w-fit rounded-box col-span-9 hidden sm:flex font-semibold text-base">
+          <ul className="menu menu-horizontal bg-primary items-center justify-center rounded-box col-span-6 hidden sm:flex font-semibold text-base w-full ">
             {navLinks.map((l) => (
               <li key={l.title}>
                 <Link
@@ -43,25 +43,36 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="dropdown dropdown-bottom dropdown-end col-span-9 flex items-center justify-end sm:hidden">
-            <div tabIndex={0} role="button" className="btn btn-sm btn-primary ">
-              <HiBars3BottomRight className="text-secondary" />
+          <div className="col-span-9 sm:col-span-3 flex itemce justify-end ">
+            <Link href={'/login'} className="btn btn-secondary btn-sm mr-2">
+              Login
+            </Link>
+            <div className="dropdown dropdown-bottom dropdown-end  flex items-center justify-end w-fit h-full sm:hidden">
+              <div>
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-sm btn-primary "
+                >
+                  <HiBars3BottomRight className="text-secondary" />
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-secondary text-primary rounded-box w-52"
+                >
+                  {navLinks.map((l) => (
+                    <li key={l.title}>
+                      <Link
+                        href={l.href}
+                        className="hover:bg-secondary hover:text-primary"
+                      >
+                        {l.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-primary rounded-box w-52"
-            >
-              {navLinks.map((l) => (
-                <li key={l.title}>
-                  <Link
-                    href={l.href}
-                    className="hover:bg-secondary hover:text-primary"
-                  >
-                    {l.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </nav>
       </Container>

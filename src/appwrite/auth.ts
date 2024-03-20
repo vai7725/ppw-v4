@@ -1,4 +1,4 @@
-import { config as conf } from '../utils/config'
+import { config as conf } from '../app/utils/config'
 import { Client, Account, ID } from 'appwrite'
 
 export type RegisterUser = {

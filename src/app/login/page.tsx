@@ -17,6 +17,7 @@ import Container from '@/components/custom/Container'
 import Link from 'next/link'
 import authService from '@/appwrite/auth'
 import { useEffect } from 'react'
+import service from '@/appwrite/config'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -42,7 +43,9 @@ export default function Login() {
 
   const fetchCurrentUser = async () => {
     const user = await authService.getCurrentUser()
+    const papers = await service.listPapers()
     console.log(user)
+    console.log(papers)
   }
 
   useEffect(() => {

@@ -15,8 +15,6 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Container from '@/components/custom/Container'
 import Link from 'next/link'
-import authService from '@/appwrite/auth'
-import { config } from '@/app/utils/config'
 
 const formSchema = z.object({
   name: z.string().min(3),
@@ -36,11 +34,7 @@ export default function Login() {
   const { formState } = form
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const res = await authService.createAccount(values)
-    if (res) {
-      const user = await authService.getCurrentUser()
-      console.log(user)
-    }
+    console.log(values)
   }
 
   return (

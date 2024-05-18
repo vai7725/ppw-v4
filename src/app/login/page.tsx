@@ -15,9 +15,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Container from '@/components/custom/Container'
 import Link from 'next/link'
-import authService from '@/appwrite/auth'
 import { useEffect } from 'react'
-import service from '@/appwrite/config'
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -36,21 +34,8 @@ export default function Login() {
   const { formState } = form
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    const res = await authService.login(values)
+    console.log(values)
   }
-
-  const fetchCurrentUser = async () => {
-    const user = await authService.getCurrentUser()
-    const papers = await service.listPapers()
-    console.log(user)
-    console.log(papers)
-  }
-
-  useEffect(() => {
-    fetchCurrentUser()
-  }, [])
 
   return (
     <Container className="min-h-screen py-20 space-y-12">

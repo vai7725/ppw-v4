@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/custom/Navbar'
 import Footer from '@/components/custom/Footer'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: 'Previous Papers | Home',
@@ -21,6 +22,7 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId={`G-${process.env.NEXT_PUBLIC_GA_ID}`} />
     </html>
   )
 }

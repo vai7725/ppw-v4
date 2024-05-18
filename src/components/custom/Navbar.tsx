@@ -44,9 +44,9 @@ export default function Navbar() {
           </ul>
 
           <div className="col-span-9 sm:col-span-3 flex itemce justify-end ">
-            <Link href={'/login'} className="btn btn-secondary btn-sm mr-2">
+            {/* <Link href={'/login'} className="btn btn-secondary btn-sm mr-2">
               Login
-            </Link>
+            </Link> */}
             <div className="dropdown dropdown-bottom dropdown-end  flex items-center justify-end w-fit h-full sm:hidden">
               <div>
                 <div

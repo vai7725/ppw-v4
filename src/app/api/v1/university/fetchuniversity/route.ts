@@ -3,8 +3,8 @@ import { University } from '@/models/universityModel'
 
 export async function GET(req: Request) {
   dbConnect()
+  const { searchParams } = new URL(req.url)
   try {
-    const { searchParams } = new URL(req.url)
     const universityId = searchParams.get('universityId')
 
     const university = await University.findById(universityId)
@@ -28,7 +28,7 @@ export async function GET(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error saving university data:', error)
+    console.error('Error saving university data:', error.message)
     return Response.json(
       {
         success: false,

@@ -42,7 +42,7 @@ export async function GET(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error fetching paper names:', error)
+    console.error('Error fetching paper names:', error.message)
     return Response.json(
       {
         success: false,

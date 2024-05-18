@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error saving university data:', error)
+    console.error('Error saving university data:', error.message)
     return Response.json(
       {
         success: false,

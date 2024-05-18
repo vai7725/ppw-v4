@@ -1,4 +1,5 @@
 import { University } from '@/types/types'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function UniversityCard({
@@ -10,7 +11,13 @@ export default function UniversityCard({
   return (
     <div className="card w-full bg-base-100 shadow-xl ring-gray-400 ring-1 max-w-80 rounded-lg">
       <figure className="aspect-video">
-        <img src={cover} alt="university image" className="size-full" />
+        <Image
+          src={cover}
+          alt="university image"
+          className="size-full"
+          width={500}
+          height={500}
+        />
       </figure>
       <div className="card-body p-2">
         <h2 className="card-title">{title}</h2>

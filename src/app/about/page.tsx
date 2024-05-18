@@ -1,4 +1,5 @@
 import Container from '@/components/custom/Container'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 
@@ -24,10 +25,12 @@ export default function About() {
           <div className="flex items-center justify-center sm:justify-start">
             <div className="card max-w-80 bg-secondary shadow shadow-primary rounded-lg">
               <figure className="p-4">
-                <img
+                <Image
                   src="https://avatars.githubusercontent.com/u/107029078?v=4"
                   alt="Shoes"
                   className="rounded-full aspect-square"
+                  width={200}
+                  height={200}
                 />
               </figure>
               <div className="card-body items-start text-start p-4">

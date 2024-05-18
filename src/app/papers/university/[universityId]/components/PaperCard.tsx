@@ -1,4 +1,5 @@
 import { PaperType } from '@/types/types'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function PaperCard({
@@ -12,10 +13,12 @@ export default function PaperCard({
   return (
     <div className=" w-full bg-base-100 shadow shadow-primary ring-gray-400 ring-1 max-w-80 rounded-lg col-span-12 sm:col-span-6 md:col-span-4 mx-auto flex flex-col justify-between">
       <figure className="h-72 ">
-        <img
-          src="https://previouspapers.netlify.app/assets/paper-cover-ebdbe78e.jpeg"
+        <Image
+          src="https://res.cloudinary.com/df4b8tzrz/image/upload/v1716031244/utils/paper-cover_aaqezb.jpg"
           alt="Question paper image"
           className="size-full rounded-t-lg"
+          width={500}
+          height={500}
         />
       </figure>
       <div className="card-body p-2">

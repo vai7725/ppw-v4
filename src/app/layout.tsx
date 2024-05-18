@@ -6,7 +6,7 @@ import Footer from '@/components/custom/Footer'
 export const metadata: Metadata = {
   title: 'Previous Papers | Home',
   description:
-    'Access question papers of different universities of Rajasthan easily. Boost your studies. Visit now!',
+    'Access previous year question papers of different universities of Rajasthan easily. Boost your studies and prepare for your exam. Visit now!',
 }
 
 export default function RootLayout({

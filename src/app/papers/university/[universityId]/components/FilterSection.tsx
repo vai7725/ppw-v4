@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 export default function FilterSection() {
   const [courseData, setCourseData] = useState([])
-  const [course, setCourse] = useState({})
+  const [course, setCourse] = useState<{ duration_years?: number }>({})
   const [paperTitles, setPaperTitles] = useState([])
   const pathName = usePathname()
   const router = useRouter()
@@ -141,26 +141,28 @@ export default function FilterSection() {
         <div className="collapse-content">
           <div className="form-control items-start justify-start">
             {Object.keys(course).length !== 0 ? (
-              Array.from({ length: course?.duration_years }).map((_, i) => (
-                <label className="label cursor-pointer" key={i}>
-                  <input
-                    type="radio"
-                    name="exam_year"
-                    className="radio radio-primary"
-                    value={i + 1}
-                    onChange={(e) => {
-                      const name = e.target.name
-                      const value = e.target.value
-                      if (e.target.checked) {
-                        router.push(
-                          `${pathName}?${createQueryString(name, value)}`
-                        )
-                      }
-                    }}
-                  />
-                  <span className=" ml-2">Year {i + 1}</span>
-                </label>
-              ))
+              Array.from({ length: course?.duration_years || 0 }).map(
+                (_, i) => (
+                  <label className="label cursor-pointer" key={i}>
+                    <input
+                      type="radio"
+                      name="exam_year"
+                      className="radio radio-primary"
+                      value={i + 1}
+                      onChange={(e) => {
+                        const name = e.target.name
+                        const value = e.target.value
+                        if (e.target.checked) {
+                          router.push(
+                            `${pathName}?${createQueryString(name, value)}`
+                          )
+                        }
+                      }}
+                    />
+                    <span className=" ml-2">Year {i + 1}</span>
+                  </label>
+                )
+              )
             ) : (
               <p className="text-sm">Select a course to see options</p>
             )}

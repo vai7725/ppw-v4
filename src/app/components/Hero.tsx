@@ -7,9 +7,9 @@ export default function Hero() {
     <div className="border-b-2 py-12">
       <Container className=" flex flex-col-reverse sm:flex-row items-center justify-between">
         <div className="">
-          <h1 className="text-3xl sm:text-4xl font-semibold text-center sm:text-left">
-            Download and <br />
-            prepare for your exam
+          <h1 className="text-3xl sm:text-5xl font-semibold text-center sm:text-left">
+            Download Previous Year <br /> Question Papers and Ace <br /> Your
+            Exams
           </h1>
         </div>
         <div className="">

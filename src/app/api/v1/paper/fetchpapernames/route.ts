@@ -4,9 +4,8 @@ import { Paper } from '@/models/papersModel'
 export async function GET(req: Request) {
   dbConnect()
 
+  const { searchParams } = new URL(req.url)
   try {
-    const { searchParams } = new URL(req.url)
-
     const universityId = searchParams.get('universityId')
     const courseId = searchParams.get('courseId')
     const exam_year = searchParams.get('exam_year')

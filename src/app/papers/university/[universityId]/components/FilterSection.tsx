@@ -113,7 +113,7 @@ export default function FilterSection() {
         </div>
       )}
 
-      <Accordion type="single" collapsible>
+      <Accordion type="multiple">
         {/* Courses */}
         <AccordionItem value="courses" className="px-4">
           <AccordionTrigger>Courses</AccordionTrigger>

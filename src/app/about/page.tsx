@@ -23,7 +23,7 @@ export default function About() {
         <section>
           <h1 className="text-2xl font-bold">Team</h1>
           <div className="flex items-center justify-center sm:justify-start">
-            <div className="card max-w-80 bg-secondary shadow shadow-primary rounded-lg">
+            <div className="card w-full max-w-80 bg-secondary shadow shadow-primary rounded-lg">
               <figure className="p-4">
                 <Image
                   src="https://avatars.githubusercontent.com/u/107029078?v=4"

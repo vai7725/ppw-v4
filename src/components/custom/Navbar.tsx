@@ -43,7 +43,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="col-span-9 sm:col-span-3 flex itemce justify-end ">
+          <div className="col-span-9 sm:col-span-3 flex items-center justify-end ">
             {/* <Link href={'/login'} className="btn btn-secondary btn-sm mr-2">
               Login
             </Link> */}
@@ -52,19 +52,24 @@ export default function Navbar() {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-sm btn-primary "
+                  className="btn btn-sm btn-square btn-ghost"
                 >
-                  <HiBars3BottomRight className="text-secondary" />
+                  <HiBars3BottomRight className="text-secondary size-8" />
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-secondary text-primary rounded-box w-52"
+                  className="dropdown-content z-[1] menu p-1 shadow-xl bg-secondary text-primary rounded"
                 >
-                  {navLinks.map((l) => (
-                    <li key={l.title}>
+                  {navLinks.map((l, i) => (
+                    <li
+                      key={l.title}
+                      className={`${
+                        i === 0 ? '' : 'border-t-2 border-gray-300'
+                      }`}
+                    >
                       <Link
                         href={l.href}
-                        className="hover:bg-secondary hover:text-primary"
+                        className="hover:bg-secondary hover:text-primary text-base font-semibold rounded"
                       >
                         {l.title}
                       </Link>

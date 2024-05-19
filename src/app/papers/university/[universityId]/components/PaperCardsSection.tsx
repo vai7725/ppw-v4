@@ -5,6 +5,7 @@ import PaperCard from './PaperCard'
 import { useParams, useSearchParams } from 'next/navigation'
 import API from '@/utils/axiosInstance'
 import { PaperQueryType, PaperType } from '@/types/types'
+import AdBanner from '@/components/custom/AdBanner'
 
 export default function PaperCardsSection() {
   const params = useParams<{ universityId: string }>()
@@ -48,7 +49,14 @@ export default function PaperCardsSection() {
 
   return (
     <div className="grid grid-cols-12 gap-4 w-full py-4 ">
-      {papers.map((paper: PaperType) => (
+      <AdBanner
+        dataAdFormat="auto"
+        dataAdSlot={process.env.NEXT_PUBLIC_DATA_AD_SLOT!}
+        pubId={process.env.NEXT_PUBLIC_ADSENSE_PID!}
+        dataFullWidthResponsive={true}
+        className="w-full sm:h-full col-span-12 sm:col-span-6 md:col-span-4"
+      />
+      {papers.map((paper: PaperType, i) => (
         <PaperCard key={paper._id} {...paper} />
       ))}
     </div>

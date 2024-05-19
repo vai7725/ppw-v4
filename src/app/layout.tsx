@@ -6,7 +6,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import AdSense from '@/components/custom/AdSense'
 
 export const metadata: Metadata = {
-  title: 'Previous Papers | Home',
+  title: 'Previous Year Quesiton Papers | Home',
   description:
     'Access previous year question papers of different universities of Rajasthan easily. Boost your studies and prepare for your exam. Visit now!',
 }

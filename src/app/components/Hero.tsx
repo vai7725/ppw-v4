@@ -1,6 +1,6 @@
 import Container from '@/components/custom/Container'
 import Image from 'next/image'
-import heroImg from '@/assets/hero-img.webp'
+import heroImg from '@/assets/hero-img2.png'
 
 export default function Hero() {
   return (

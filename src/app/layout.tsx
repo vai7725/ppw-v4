@@ -3,6 +3,7 @@ import './globals.css'
 import Navbar from '@/components/custom/Navbar'
 import Footer from '@/components/custom/Footer'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import AdSense from '@/components/custom/AdSense'
 
 export const metadata: Metadata = {
   title: 'Previous Papers | Home',
@@ -17,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <AdSense pId={process.env.NEXT_PUBLIC_ADSENSE_PID!} />
+      </head>
       <body>
         <Navbar />
         {children}

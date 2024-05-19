@@ -113,7 +113,10 @@ export default function FilterSection() {
         </div>
       )}
 
-      <Accordion type="multiple">
+      <Accordion
+        type="multiple"
+        defaultValue={['courses', 'exam_year', 'subject_title']}
+      >
         {/* Courses */}
         <AccordionItem value="courses" className="px-4">
           <AccordionTrigger>Courses</AccordionTrigger>

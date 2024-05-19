@@ -4,6 +4,7 @@ import Navbar from '@/components/custom/Navbar'
 import Footer from '@/components/custom/Footer'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import AdSense from '@/components/custom/AdSense'
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Previous Year Quesiton Papers | Home',
@@ -22,6 +23,7 @@ export default function RootLayout({
         <AdSense pId={process.env.NEXT_PUBLIC_ADSENSE_PID!} />
       </head>
       <body>
+        <Toaster />
         <Navbar />
         {children}
         <Footer />

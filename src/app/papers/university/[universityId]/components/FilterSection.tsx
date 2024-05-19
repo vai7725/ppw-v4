@@ -1,10 +1,18 @@
 'use client'
 
-import { Course } from '@/types/types'
+import { Course, PaperQueryType } from '@/types/types'
 import API from '@/utils/axiosInstance'
 import { useParams, usePathname, useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+import { Label } from '@/components/ui/label'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 
 export default function FilterSection() {
   const [courseData, setCourseData] = useState([])
@@ -104,107 +112,102 @@ export default function FilterSection() {
           </button>
         </div>
       )}
-      {/* Courses */}
-      <div className="collapse collapse-arrow rounded-lg">
-        <input type="radio" name="my-accordion-2" defaultChecked />
-        <div className="collapse-title text-base font-medium">Courses</div>
-        <div className="collapse-content">
-          <div className="form-control items-start justify-start">
-            {courseData.map((course: Course) => (
-              <label key={course._id} className="label cursor-pointer">
-                <input
-                  type="radio"
-                  className="radio radio-primary"
-                  value={course._id}
-                  checked={course._id === courseId}
-                  name="courseId"
-                  onChange={(e) => {
-                    const name = e.target.name
-                    const value = e.target.value
-                    if (e.target.checked) {
-                      router.push(`${pathName}?${name}=${value}`)
-                    }
-                  }}
-                />
-                <span className=" ml-2">{course.title}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="divider my-0"></div>
 
-      {/* Exam year */}
-      <div className="collapse collapse-arrow rounded-lg">
-        <input type="radio" name="my-accordion-2" />
-        <div className="collapse-title text-base font-medium">Exam year</div>
-        <div className="collapse-content">
-          <div className="form-control items-start justify-start">
-            {Object.keys(course).length !== 0 ? (
-              Array.from({ length: course?.duration_years || 0 }).map(
-                (_, i) => (
-                  <label className="label cursor-pointer" key={i}>
-                    <input
-                      type="radio"
-                      name="exam_year"
-                      className="radio radio-primary"
-                      value={i + 1}
-                      onChange={(e) => {
-                        const name = e.target.name
-                        const value = e.target.value
-                        if (e.target.checked) {
-                          router.push(
-                            `${pathName}?${createQueryString(name, value)}`
-                          )
-                        }
-                      }}
-                    />
-                    <span className=" ml-2">Year {i + 1}</span>
-                  </label>
-                )
-              )
-            ) : (
-              <p className="text-sm">Select a course to see options</p>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="divider my-0"></div>
-
-      {/* Subjects */}
-      <div className="collapse collapse-arrow rounded-lg">
-        <input type="radio" name="my-accordion-2" />
-        <div className="collapse-title text-base font-medium">Subjects</div>
-        <div className="collapse-content">
-          <div className="form-control items-start justify-start">
-            {paperTitles.length > 0 ? (
-              paperTitles.map((title, i) => (
-                <label className="label cursor-pointer" key={i}>
-                  <input
-                    type="radio"
-                    name="subject_title"
-                    className="radio radio-primary"
-                    value={title}
-                    onChange={(e) => {
-                      const name = e.target.name
-                      const value = e.target.value
-                      if (e.target.checked) {
-                        router.push(
-                          `${pathName}?${createQueryString(name, value)}`
-                        )
-                      }
+      <Accordion type="single" collapsible>
+        {/* Courses */}
+        <AccordionItem value="courses" className="px-4">
+          <AccordionTrigger>Courses</AccordionTrigger>
+          <AccordionContent>
+            <RadioGroup>
+              {courseData.map((course: Course) => (
+                <div
+                  className="flex items-center space-x-2 py-1"
+                  key={course._id}
+                >
+                  <RadioGroupItem
+                    value={course._id}
+                    id={course._id}
+                    checked={courseId === course._id}
+                    onClick={(e) => {
+                      const value = course._id
+                      router.push(
+                        `${pathName}?${createQueryString('courseId', value)}`
+                      )
                     }}
                   />
-                  <span className=" ml-2">{title}</span>
-                </label>
-              ))
-            ) : (
-              <p className="text-sm">Select exam year to see options</p>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="divider my-0"></div>
+                  <Label htmlFor={course._id}>{course.title}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Exam year */}
+        <AccordionItem value="exam_year" className="px-4">
+          <AccordionTrigger>Exam year</AccordionTrigger>
+          <AccordionContent>
+            <RadioGroup>
+              {Object.keys(course).length !== 0 ? (
+                Array.from({ length: course?.duration_years || 0 }).map(
+                  (_, i) => (
+                    <div className="flex items-center space-x-2 py-1" key={i}>
+                      <RadioGroupItem
+                        value={(i + 1).toString()}
+                        id={(i + 1).toString()}
+                        checked={exam_year === (i + 1).toString()}
+                        onClick={(e) => {
+                          const value = (i + 1).toString()
+                          router.push(
+                            `${pathName}?${createQueryString(
+                              'exam_year',
+                              value
+                            )}`
+                          )
+                        }}
+                      />
+                      <Label htmlFor={(i + 1).toString()}>Year {i + 1}</Label>
+                    </div>
+                  )
+                )
+              ) : (
+                <p className="text-sm">Select a course to see options</p>
+              )}
+            </RadioGroup>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Subject titles */}
+        <AccordionItem value="subject_title" className="px-4">
+          <AccordionTrigger>Subjects</AccordionTrigger>
+          <AccordionContent>
+            <RadioGroup>
+              {paperTitles.length > 0 ? (
+                paperTitles.map((title: string, i) => (
+                  <div className="flex items-center space-x-2 py-1" key={i}>
+                    <RadioGroupItem
+                      value={title}
+                      id={title}
+                      checked={subject_title === title}
+                      onClick={(e) => {
+                        const value = title
+                        router.push(
+                          `${pathName}?${createQueryString(
+                            'subject_title',
+                            value
+                          )}`
+                        )
+                      }}
+                    />
+                    <Label htmlFor={title}>{title}</Label>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm">Select exam year to see options</p>
+              )}
+            </RadioGroup>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </>
   )
 }

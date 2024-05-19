@@ -43,7 +43,8 @@ export default async function PaperSection({
         </div>
         <div className="divider"></div>
         <div className="grid grid-cols-12">
-          <aside className="col-span-3 space-y-2 hidden sm:block sticky top-0 h-fit">
+          <aside className="col-span-3 space-y-2 hidden sm:block sticky top-0 h-fit ">
+            <h2 className="text-xl font-semibold mb-4 py-4">Apply filters</h2>
             <FilterSection />
           </aside>
           <section className="col-span-12 sm:col-span-9 p-2 space-y-4">

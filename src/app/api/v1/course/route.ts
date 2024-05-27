@@ -36,7 +36,7 @@ export async function GET(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error fetching courses data:', error)
+    console.error('Error fetching courses data:', error.message)
     return Response.json(
       {
         success: false,
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error saving course data:', error)
+    console.error('Error saving course data:', error.message)
     return Response.json(
       {
         success: false,

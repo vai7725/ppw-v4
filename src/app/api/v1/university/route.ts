@@ -22,8 +22,8 @@ export async function GET(req: Request) {
       },
       { status: 200 }
     )
-  } catch (error) {
-    console.error('Error fetching university data:', error)
+  } catch (error: any) {
+    console.error('Error fetching university data:', error.message)
     return Response.json(
       {
         success: false,

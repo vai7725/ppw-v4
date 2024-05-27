@@ -40,7 +40,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error fetching course data:', error)
+    console.error('Error fetching course data:', error.message)
     return Response.json(
       {
         success: false,

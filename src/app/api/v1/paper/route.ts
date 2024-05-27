@@ -39,16 +39,31 @@ export async function GET(req: Request) {
     const papers = await Paper.aggregate([
       {
         $lookup: {
+          from: 'universities',
+          localField: 'universityId',
+          foreignField: '_id',
+          as: 'university',
+        },
+      },
+      {
+        $lookup: {
           from: 'courses',
           localField: 'courseId',
           foreignField: '_id',
-          as: 'courseDetails',
+          as: 'course',
         },
       },
       {
         $addFields: {
           courseDetails: {
-            $arrayElemAt: ['$courseDetails', 0],
+            $arrayElemAt: ['$course', 0],
+          },
+        },
+      },
+      {
+        $addFields: {
+          universityDetails: {
+            $arrayElemAt: ['$university', 0],
           },
         },
       },
@@ -78,7 +93,7 @@ export async function GET(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error fetching papers data:', error)
+    console.error('Error fetching papers data:', error.message)
     return Response.json(
       {
         success: false,
@@ -126,7 +141,7 @@ export async function POST(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error saving paper data:', error)
+    console.error('Error saving paper data:', error.message)
     return Response.json(
       {
         success: false,

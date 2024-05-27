@@ -1,14 +1,13 @@
-import Hero from './components/Hero'
-import Universities from './components/university/Universities'
-
-export const dynamic = 'force-dynamic'
+import AboutSection from './components/AboutSection'
+import BrowseUniversitiesSection from './components/BroserUniversities'
+import HeroSection from './components/Hero'
 
 export default async function page() {
   return (
     <div>
-      {/* <FetchUser /> */}
-      <Hero />
-      <Universities />
+      <HeroSection />
+      <AboutSection />
+      <BrowseUniversitiesSection />
     </div>
   )
 }

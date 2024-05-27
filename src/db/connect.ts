@@ -15,8 +15,8 @@ export async function dbConnect() {
       )
       process.exit()
     })
-  } catch (error) {
-    console.log('Something goes wrong!')
-    console.log(error)
+  } catch (error: any) {
+    console.error('Something goes wrong!')
+    console.error(error.message)
   }
 }

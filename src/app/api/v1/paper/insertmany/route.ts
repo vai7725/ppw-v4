@@ -38,7 +38,7 @@ export async function POST(req: Request) {
       { status: 200 }
     )
   } catch (error: any) {
-    console.error('Error saving paper data:', error)
+    console.error('Error saving paper data:', error.message)
     return Response.json(
       {
         success: false,

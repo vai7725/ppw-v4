@@ -5,9 +5,12 @@ import Footer from '@/components/custom/Footer'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import AdSense from '@/components/custom/AdSense'
 import { Toaster } from '@/components/ui/toaster'
+import { PROJECT_TITLE } from '@/utils/constants'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Previous Year Quesiton Papers | Home',
+  title: `${PROJECT_TITLE} | Home`,
   description:
     'Access previous year question papers of different universities of Rajasthan easily. Boost your studies and prepare for your exam. Visit now!',
 }
